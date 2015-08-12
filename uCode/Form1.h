@@ -56,7 +56,7 @@ namespace uCode {
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::TextBox^  textBoxFileExtension;
 
-	private: System::Windows::Forms::Button^  buttonAbstract;
+	private: System::Windows::Forms::Button^  buttonExtract;
 	private: System::Windows::Forms::Label^  label3;
 	private: System::Windows::Forms::FolderBrowserDialog^  folderBrowserDialog1;
 	private: System::Windows::Forms::TextBox^  textBoxDestination;
@@ -91,7 +91,7 @@ namespace uCode {
 			this->buttonPdbFile = (gcnew System::Windows::Forms::Button());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->textBoxFileExtension = (gcnew System::Windows::Forms::TextBox());
-			this->buttonAbstract = (gcnew System::Windows::Forms::Button());
+			this->buttonExtract = (gcnew System::Windows::Forms::Button());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->folderBrowserDialog1 = (gcnew System::Windows::Forms::FolderBrowserDialog());
 			this->textBoxDestination = (gcnew System::Windows::Forms::TextBox());
@@ -157,9 +157,9 @@ namespace uCode {
 			this->label2->AutoSize = true;
 			this->label2->Location = System::Drawing::Point(15, 66);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(153, 16);
+			this->label2->Size = System::Drawing::Size(144, 16);
 			this->label2->TabIndex = 6;
-			this->label2->Text = L"Abstracted file extension";
+			this->label2->Text = L"Extracted file extension";
 			// 
 			// textBoxFileExtension
 			// 
@@ -169,16 +169,16 @@ namespace uCode {
 			this->textBoxFileExtension->TabIndex = 7;
 			this->textBoxFileExtension->Text = L"mcb";
 			// 
-			// buttonAbstract
+			// buttonExtract
 			// 
-			this->buttonAbstract->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
-			this->buttonAbstract->Location = System::Drawing::Point(444, 332);
-			this->buttonAbstract->Name = L"buttonAbstract";
-			this->buttonAbstract->Size = System::Drawing::Size(75, 23);
-			this->buttonAbstract->TabIndex = 12;
-			this->buttonAbstract->Text = L"Abstract";
-			this->buttonAbstract->UseVisualStyleBackColor = true;
-			this->buttonAbstract->Click += gcnew System::EventHandler(this, &Form1::buttonAbstract_Click);
+			this->buttonExtract->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
+			this->buttonExtract->Location = System::Drawing::Point(444, 332);
+			this->buttonExtract->Name = L"buttonExtract";
+			this->buttonExtract->Size = System::Drawing::Size(75, 23);
+			this->buttonExtract->TabIndex = 12;
+			this->buttonExtract->Text = L"Extract";
+			this->buttonExtract->UseVisualStyleBackColor = true;
+			this->buttonExtract->Click += gcnew System::EventHandler(this, &Form1::buttonExtract_Click);
 			// 
 			// label3
 			// 
@@ -272,7 +272,7 @@ namespace uCode {
 			this->Controls->Add(this->buttonDestination);
 			this->Controls->Add(this->textBoxDestination);
 			this->Controls->Add(this->label3);
-			this->Controls->Add(this->buttonAbstract);
+			this->Controls->Add(this->buttonExtract);
 			this->Controls->Add(this->textBoxFileExtension);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->buttonPdbFile);
@@ -284,7 +284,7 @@ namespace uCode {
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->MinimumSize = System::Drawing::Size(556, 402);
 			this->Name = L"Form1";
-			this->Text = L"uCode abstractor PX 0.3";
+			this->Text = L"uCode Extractor PX 0.4";
 			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
 			this->DragDrop += gcnew System::Windows::Forms::DragEventHandler(this, &Form1::Form1_DragDrop);
 			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &Form1::Form1_FormClosed);
@@ -467,7 +467,7 @@ namespace uCode {
 					 checkedListBoxUCode->Items->Add(uCodeHeaderBuffer->FileNaming);
 				 }
 			 }
-	private: System::Void buttonAbstract_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void buttonExtract_Click(System::Object^  sender, System::EventArgs^  e) {
 				 if (!File::Exists(textBoxPdbFile->Text)) return;
 				 if (!Directory::Exists(textBoxDestination->Text)) return;
 				 BinaryReader ^PdbFile = gcnew BinaryReader(File::Open(textBoxPdbFile->Text, System::IO::FileMode::Open));

@@ -4,7 +4,7 @@ namespace uCode {
 	//
 	// Definition for Registry manipulation
 	//
-	#define APP_KEY							"uCodeAbstractor"
+	#define APP_KEY							"uCodeExtractor"
 	#define APP_VERSION_VALUE   			"AppVersion"
 	#define APP_REGISTRY_VERSION			"0.1"
 
