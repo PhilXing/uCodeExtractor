@@ -128,6 +128,7 @@ namespace uCode {
 			this->textBoxPdbFile->Name = L"textBoxPdbFile";
 			this->textBoxPdbFile->Size = System::Drawing::Size(336, 22);
 			this->textBoxPdbFile->TabIndex = 1;
+			this->textBoxPdbFile->TextChanged += gcnew System::EventHandler(this, &Form1::textBoxPdbFile_TextChanged);
 			this->textBoxPdbFile->Leave += gcnew System::EventHandler(this, &Form1::textBoxPdbFile_Leave);
 			// 
 			// checkedListBoxUCode
@@ -284,7 +285,7 @@ namespace uCode {
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->MinimumSize = System::Drawing::Size(556, 402);
 			this->Name = L"Form1";
-			this->Text = L"uCode Extractor PX 0.4";
+			this->Text = L"uCode Extractor PX 0.5";
 			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
 			this->DragDrop += gcnew System::Windows::Forms::DragEventHandler(this, &Form1::Form1_DragDrop);
 			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &Form1::Form1_FormClosed);
@@ -415,12 +416,12 @@ namespace uCode {
 				 }
 			 }
 	private: System::Void textBoxPdbFile_Leave(System::Object^  sender, System::EventArgs^  e) {
-				 if (File::Exists(textBoxPdbFile->Text)) {
-					 ParsePdb();
-					 buttonUpgrade_Click(sender, e);
-				 } else {
-					 checkedListBoxUCode->Items->Clear();
-				 }
+				 //if (File::Exists(textBoxPdbFile->Text)) {
+					// ParsePdb();
+					// buttonUpgrade_Click(sender, e);
+				 //} else {
+					// checkedListBoxUCode->Items->Clear();
+				 //}
 			 }
 	private: System::Void ParsePdb(System::Void) {
 				 BinaryReader ^PdbFile = gcnew BinaryReader(File::Open(textBoxPdbFile->Text, System::IO::FileMode::Open));
@@ -496,6 +497,14 @@ namespace uCode {
 				 PdbFile->Close();
 				 buttonNone_Click(sender, e);
 				 checkedListBoxUCode->SelectedIndex = -1;
+			 }
+	private: System::Void textBoxPdbFile_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+				 if (File::Exists(textBoxPdbFile->Text)) {
+					 ParsePdb();
+					 buttonUpgrade_Click(sender, e);
+				 } else {
+					 checkedListBoxUCode->Items->Clear();
+				 }
 			 }
 	};
 }
